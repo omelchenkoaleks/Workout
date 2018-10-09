@@ -15,8 +15,14 @@ public class MainActivity extends AppCompatActivity implements WorkoutListFragme
 
     @Override
     public void itemClicked(long id) {
-        Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra(DetailActivity.EXTRA_WORKOUT_ID, (int)id);
-        startActivity(intent);
+
+        View fragmentContainer = findViewById(R.id.fragment_container);
+        if (fragmentContainer != null) {
+            // добавляем фрагмент в FrameLayout
+        } else {
+            Intent intent = new Intent(this, DetailActivity.class);
+            intent.putExtra(DetailActivity.EXTRA_WORKOUT_ID, (int) id);
+            startActivity(intent);
+        }
     }
 }
