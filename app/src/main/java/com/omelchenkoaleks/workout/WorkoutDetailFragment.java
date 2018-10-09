@@ -17,10 +17,6 @@ public class WorkoutDetailFragment extends Fragment {
     // идентификатор, он будет использован для заполнения представлений фрагмента
     private long workoutId;
 
-    public WorkoutDetailFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
