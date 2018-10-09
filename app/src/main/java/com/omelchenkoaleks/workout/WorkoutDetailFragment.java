@@ -2,6 +2,8 @@ package com.omelchenkoaleks.workout;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,15 @@ public class WorkoutDetailFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_workout_detail, container, false);
     }
 
+    // метод нужен чтобы сохранить состояние переменной перед уничтожением фрагмента
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            workoutId = savedInstanceState.getLong("workoutId");
+        }
+    }
+
     // обновляем предствление фрагмента
     @Override
     public void onStart() {
@@ -37,6 +48,11 @@ public class WorkoutDetailFragment extends Fragment {
             TextView description = view.findViewById(R.id.textDescription);
             description.setText(workout.getDescription());
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putLong("workoutId", workoutId);
     }
 
     // метод для присваивания идентификатора
